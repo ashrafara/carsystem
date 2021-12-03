@@ -1,0 +1,179 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-failure-heading" data-cy="FailureCreateUpdateHeading" style="text-align: right">اضافة او تعديل</h2>
+
+      <div style="text-align: right">
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ر.م</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_name">اسم العطل</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_failureDate">تاريخ العطل</label>
+          <div class="input-group">
+            <input
+              id="field_failureDate"
+              data-cy="failureDate"
+              type="text"
+              class="form-control"
+              name="failureDate"
+              ngbDatepicker
+              #failureDateDp="ngbDatepicker"
+              formControlName="failureDate"
+            />
+            <span class="input-group-append">
+              <button type="button" class="btn btn-secondary" (click)="failureDateDp.toggle()">
+                <fa-icon icon="calendar-alt"></fa-icon>
+              </button>
+            </span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_carGuagefrom">العداد من</label>
+          <input
+            type="number"
+            class="form-control"
+            name="carGuagefrom"
+            id="field_carGuagefrom"
+            data-cy="carGuagefrom"
+            formControlName="carGuagefrom"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_carGuageTo">العداد الي</label>
+          <input
+            type="number"
+            class="form-control"
+            name="carGuageTo"
+            id="field_carGuageTo"
+            data-cy="carGuageTo"
+            formControlName="carGuageTo"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_changepart">اجزاء المصلحه</label>
+          <input
+            type="text"
+            class="form-control"
+            name="changepart"
+            id="field_changepart"
+            data-cy="changepart"
+            formControlName="changepart"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_garageName">اسم الورشة</label>
+          <input
+            type="text"
+            class="form-control"
+            name="garageName"
+            id="field_garageName"
+            data-cy="garageName"
+            formControlName="garageName"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_price">القيمة</label>
+          <input type="number" class="form-control" name="price" id="field_price" data-cy="price" formControlName="price" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_inovice1">الفاتورة 1</label>
+          <input type="text" class="form-control" name="inovice1" id="field_inovice1" data-cy="inovice1" formControlName="inovice1" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_inovice2">الفاتورة 2</label>
+          <input type="text" class="form-control" name="inovice2" id="field_inovice2" data-cy="inovice2" formControlName="inovice2" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_inovice3">الفاتورة 3</label>
+          <input type="text" class="form-control" name="inovice3" id="field_inovice3" data-cy="inovice3" formControlName="inovice3" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_inovice4">الفاتورة 4</label>
+          <input type="text" class="form-control" name="inovice4" id="field_inovice4" data-cy="inovice4" formControlName="inovice4" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_note">ملاحظات</label>
+          <input type="text" class="form-control" name="note" id="field_note" data-cy="note" formControlName="note" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_image">صور الفواتير</label>
+          <div>
+            <div *ngIf="editForm.get('image')!.value" class="form-text text-danger clearfix">
+              <a class="pull-left" (click)="openFile(editForm.get('image')!.value, editForm.get('imageContentType')!.value)">open</a><br />
+              <span class="pull-left">{{ editForm.get('imageContentType')!.value }}, {{ byteSize(editForm.get('image')!.value) }}</span>
+              <button
+                type="button"
+                (click)="editForm.patchValue({ image: null }); editForm.patchValue({ imageContentType: null })"
+                class="btn btn-secondary btn-xs pull-right"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input type="file" id="file_image" data-cy="image" (change)="setFileData($event, 'image', false)" />
+          </div>
+          <input type="hidden" class="form-control" name="image" id="field_image" data-cy="image" formControlName="image" />
+          <input
+            type="hidden"
+            class="form-control"
+            name="imageContentType"
+            id="field_imageContentType"
+            formControlName="imageContentType"
+          />
+        </div>
+        `
+        <div class="form-group">
+          <label class="form-control-label" for="field_car">السيارة</label>
+          <div ng-controller="filterctrl">
+            بحث عن الاسم:<input ng-model="searchtxt.car" type="text" placeholder="Enter Only Name" /><br /><br />
+          </div>
+
+          <select class="form-control" id="field_car" data-cy="car" name="car" formControlName="car" size="5">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="carOption.id === editForm.get('car')!.value?.id ? editForm.get('car')!.value : carOption"
+              *ngFor="let carOption of carsSharedCollection; trackBy: trackCarById"
+            >
+              {{ carOption.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span>الغاء</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span>حفظ</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

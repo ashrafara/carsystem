@@ -1,0 +1,76 @@
+{
+  "name": "Failure",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "failureDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "carGuagefrom",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "carGuageTo",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "changepart",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "garageName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "inovice1",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "inovice2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "inovice3",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "inovice4",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "note",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "image",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "any"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "car",
+      "otherEntityRelationshipName": "failure",
+      "relationshipName": "car"
+    }
+  ],
+  "entityTableName": "failure",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211130003556"
+}

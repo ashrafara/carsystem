@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-employee-heading" data-cy="EmployeeCreateUpdateHeading" style="text-align: right">اضافة او تعديل</h2>
+
+      <div style="text-align: right">
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ر.م</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_name">اسم الموظف</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_position">الوظيفة</label>
+          <input type="text" class="form-control" name="position" id="field_position" data-cy="position" formControlName="position" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_phone">رقم الهاتف</label>
+          <input type="text" class="form-control" name="phone" id="field_phone" data-cy="phone" formControlName="phone" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_note">ملاحظات</label>
+          <input type="text" class="form-control" name="note" id="field_note" data-cy="note" formControlName="note" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_car">السيارة</label>
+          <select class="form-control" id="field_car" data-cy="car" name="car" formControlName="car">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="carOption.id === editForm.get('car')!.value?.id ? editForm.get('car')!.value : carOption"
+              *ngFor="let carOption of carsCollection; trackBy: trackCarById"
+            >
+              {{ carOption.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button
+          type="button"
+          id="cancel-save"
+          data-cy="entityCreateCancelButton"
+          class="btn btn-secondary btn-sm"
+          (click)="previousState()"
+        >
+          <span>الغاء</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary btn-sm"
+        >
+          <span>حفظ</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

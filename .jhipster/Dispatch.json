@@ -1,0 +1,41 @@
+{
+  "name": "Dispatch",
+  "fields": [
+    {
+      "fieldName": "dispatchDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "item",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "quantity",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "car",
+      "otherEntityRelationshipName": "dispatch",
+      "relationshipName": "car"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "supplier",
+      "otherEntityRelationshipName": "dispatch",
+      "relationshipName": "supplier"
+    }
+  ],
+  "entityTableName": "dispatch",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211130003555"
+}

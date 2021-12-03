@@ -1,0 +1,72 @@
+{
+  "name": "Car",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "carIssue",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "carnNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "carMotor",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "carShellNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "classification",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "madein",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "panaelnumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "notes",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "dispatch",
+      "otherEntityRelationshipName": "car",
+      "relationshipName": "dispatch"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "failure",
+      "otherEntityRelationshipName": "car",
+      "relationshipName": "failure"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "employee",
+      "otherEntityRelationshipName": "car",
+      "relationshipName": "employee",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "car",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": true,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20211130003557"
+}

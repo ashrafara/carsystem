@@ -1,0 +1,120 @@
+<div style="text-align: right">
+  <h2 id="page-heading" data-cy="FailureHeading">
+    <span>الاعطال</span>
+
+    <div class="d-flex justify-content-end">
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-failure"
+        [routerLink]="['/failure/new']"
+      >
+        <span> اضافة </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="failures?.length === 0">
+    <span>لا توجد اعطال</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="failures && failures.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span>ر.م</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="name"><span>اسم العطل</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="failureDate"><span>تاريخ العطل</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="carGuagefrom"><span>العداد الى</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="carGuageTo"><span>العداد الى</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="changepart"><span>الاجزاء المعطلة</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="garageName"><span>اسم الورشة</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="price"><span>التسعيرة</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="inovice1"><span>الفاتورة 1</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="inovice2"><span>الفاتورة 2</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="inovice3"><span>الفاتورة 3</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="inovice4"><span>الفاتورة 4</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="note"><span>ملاحظات</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="image"><span>الصورة</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="car.id"><span>السيارة</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let failure of failures; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/failure', failure.id, 'view']">{{ failure.id }}</a>
+          </td>
+          <td>{{ failure.name }}</td>
+          <td>{{ failure.failureDate | formatMediumDate }}</td>
+          <td>{{ failure.carGuagefrom }}</td>
+          <td>{{ failure.carGuageTo }}</td>
+          <td>{{ failure.changepart }}</td>
+          <td>{{ failure.garageName }}</td>
+          <td>{{ failure.price }}</td>
+          <td>{{ failure.inovice1 }}</td>
+          <td>{{ failure.inovice2 }}</td>
+          <td>{{ failure.inovice3 }}</td>
+          <td>{{ failure.inovice4 }}</td>
+          <td>{{ failure.note }}</td>
+          <td>
+            <a *ngIf="failure.image" (click)="openFile(failure.image, failure.imageContentType)">فتح</a>
+            <span *ngIf="failure.image">{{ failure.imageContentType }}, {{ byteSize(failure.image) }}</span>
+          </td>
+          <td>
+            <div *ngIf="failure.car">
+              <a [routerLink]="['/car', failure.car?.name, 'view']">{{ failure.car?.name }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/failure', failure.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <span class="d-none d-md-inline">عرض</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/failure', failure.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <span class="d-none d-md-inline">تعديل</span>
+              </button>
+
+              <button type="submit" (click)="delete(failure)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <span class="d-none d-md-inline">حذف</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="failures && failures.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

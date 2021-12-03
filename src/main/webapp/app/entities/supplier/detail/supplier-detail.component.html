@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="supplier">
+      <h2 data-cy="supplierDetailsHeading" style="text-align: right"><span>المورد</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details" style="text-align: right">
+        <dt><span>#</span></dt>
+        <dd>
+          <span>{{ supplier.id }}</span>
+        </dd>
+        <dt><span>اسم المورد</span></dt>
+        <dd>
+          <span>{{ supplier.name }}</span>
+        </dd>
+        <dt><span>تاريخ التوريد</span></dt>
+        <dd>
+          <span>{{ supplier.supplierdate | formatMediumDate }}</span>
+        </dd>
+        <dt><span>الكمية</span></dt>
+        <dd>
+          <span>{{ supplier.quantity }}</span>
+        </dd>
+        <dt><span>الصنف</span></dt>
+        <dd>
+          <span>{{ supplier.item }}</span>
+        </dd>
+        <dt><span>ملاحظات</span></dt>
+        <dd>
+          <span>{{ supplier.note }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info btn-sm" data-cy="entityDetailsBackButton">
+        &nbsp;<span>للخلف</span>
+      </button>
+
+      <button type="button" [routerLink]="['/supplier', supplier.id, 'edit']" class="btn btn-primary btn-sm">
+        <span>تعديل</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,93 @@
+<div style="text-align: right">
+  <h2 id="page-heading" data-cy="CarHeading">
+    <span>السيارات</span>
+
+    <div class="d-flex justify-content-end">
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-car"
+        [routerLink]="['/car/new']"
+      >
+        <span> إضافة </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="cars?.length === 0">
+    <span>لا توجد السيارة</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="cars && cars.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="loadPage()">
+          <th scope="col" jhiSortBy="id"><span>ر.م</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="name"><span>اسم السيارة</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="carIssue"><span>سنة تصنيع</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="carnNumber"><span>رقم اللوحة</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="carMotor"><span>رقم المحرك</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="carShellNumber"><span>رقم الهيكل</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="classification"><span>تصنيف</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="madein"><span>بلد التصنيع</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="panaelnumber"><span>قوة المحرك</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col" jhiSortBy="notes"><span>ملاحظات</span> <fa-icon icon="sort"></fa-icon></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let car of cars; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/car', car.id, 'view']">{{ car.id }}</a>
+          </td>
+          <td>{{ car.name }}</td>
+          <td>{{ car.carIssue }}</td>
+          <td>{{ car.carnNumber }}</td>
+          <td>{{ car.carMotor }}</td>
+          <td>{{ car.carShellNumber }}</td>
+          <td>{{ car.classification }}</td>
+          <td>{{ car.madein }}</td>
+          <td>{{ car.panaelnumber }}</td>
+          <td>{{ car.notes }}</td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/car', car.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <span class="d-none d-md-inline">عرض</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/car', car.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <span class="d-none d-md-inline">تعديل</span>
+              </button>
+
+              <button type="submit" (click)="delete(car)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <span class="d-none d-md-inline">حذف</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="cars && cars.length > 0">
+    <div class="row justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="row justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [(page)]="ngbPaginationPage"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="loadPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>
