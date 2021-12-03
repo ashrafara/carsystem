@@ -15,7 +15,7 @@
     "blueprints": [],
     "otherModules": [],
     "pages": [],
-    "creationTimestamp": 1638142643581,
+    "creationTimestamp": 1638231816379,
     "serviceDiscoveryType": "no",
     "reactive": false,
     "authenticationType": "jwt",
@@ -37,11 +37,13 @@
     "clientTheme": "none",
     "enableTranslation": false,
     "nativeLanguage": "en",
-    "jwtSecretKey": "YjNhMGMwMmYwMzY3ZGQ0ZGI5NGE1ODZlMDE2ZGQ0NjQ5ZGE4NGRlZjBiNjlkYjQ1ZjkyM2I5YTRiYjVlZDA2MTFhNGMzZDNlZjIzNmJhMzRhZDkxYWQwMWRmNjdjYzBlMzU0NjI3NjQ1YmY3MmEyNjNhMGRlZGU0YTA1MmI1NjE=",
+    "jwtSecretKey": "MzRiZDM1NDFiZjRmMmZmYTllY2VkY2Q3ZTE5YjIxYmExOGE2MTZiMTc0OThmNTQ1NTEwMjhkNWZiMDllOTBiNTRjN2E0NjA5OTkxZjc1NTUzZTBkYzdiZGM3NWRiMDU0ZDk2NTgxMzljOTM5NzA5MzJjMmRjM2YwMjllNTkzZDE=",
     "devServerPort": 4200,
     "clientPackageManager": "npm",
     "clientThemeVariant": "",
     "enableGradleEnterprise": false,
-    "languages": ["en", "fr"]
+    "languages": ["en", "fr"],
+    "entities": ["Supplier", "Dispatch", "Failure", "Car", "Employee"],
+    "lastLiquibaseTimestamp": 1638232558000
   }
 }
