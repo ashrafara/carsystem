@@ -1,0 +1,64 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="car">
+      <h2 data-cy="carDetailsHeading" style="text-align: right"><span>السيارات</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details" style="text-align: right">
+        <dt><span>ر.م</span></dt>
+        <dd>
+          <span>{{ car.id }}</span>
+        </dd>
+        <dt><span>اسم السيارة</span></dt>
+        <dd>
+          <span>{{ car.name }}</span>
+        </dd>
+        <dt><span>سنة الاصدار</span></dt>
+        <dd>
+          <span>{{ car.carIssue }}</span>
+        </dd>
+        <dt><span>رقم اللوحة</span></dt>
+        <dd>
+          <span>{{ car.carnNumber }}</span>
+        </dd>
+        <dt><span>رقم المحرك</span></dt>
+        <dd>
+          <span>{{ car.carMotor }}</span>
+        </dd>
+        <dt><span>رقم الهيكل</span></dt>
+        <dd>
+          <span>{{ car.carShellNumber }}</span>
+        </dd>
+        <dt><span>التصنيف</span></dt>
+        <dd>
+          <span>{{ car.classification }}</span>
+        </dd>
+        <dt><span>بلد التصنيع</span></dt>
+        <dd>
+          <span>{{ car.madein }}</span>
+        </dd>
+        <dt><span>قوة المحرك</span></dt>
+        <dd>
+          <span>{{ car.panaelnumber }}</span>
+        </dd>
+        <dt><span>ملاحظات</span></dt>
+        <dd>
+          <span>{{ car.notes }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info btn-sm" data-cy="entityDetailsBackButton">
+        <span>للخلف</span>
+      </button>
+
+      <button type="button" [routerLink]="['/car', car.id, 'edit']" class="btn btn-primary btn-sm">
+        <span>تعديل</span>
+      </button>
+    </div>
+  </div>
+</div>

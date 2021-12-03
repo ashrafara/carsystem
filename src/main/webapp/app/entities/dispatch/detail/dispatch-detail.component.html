@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="dispatch">
+      <h2 data-cy="dispatchDetailsHeading"><span>Dispatch</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span>ID</span></dt>
+        <dd>
+          <span>{{ dispatch.id }}</span>
+        </dd>
+        <dt><span>Dispatch Date</span></dt>
+        <dd>
+          <span>{{ dispatch.dispatchDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span>Item</span></dt>
+        <dd>
+          <span>{{ dispatch.item }}</span>
+        </dd>
+        <dt><span>Quantity</span></dt>
+        <dd>
+          <span>{{ dispatch.quantity }}</span>
+        </dd>
+        <dt><span>Car</span></dt>
+        <dd>
+          <div *ngIf="dispatch.car">
+            <a [routerLink]="['/car', dispatch.car?.id, 'view']">{{ dispatch.car?.id }}</a>
+          </div>
+        </dd>
+        <dt><span>Supplier</span></dt>
+        <dd>
+          <div *ngIf="dispatch.supplier">
+            <a [routerLink]="['/supplier', dispatch.supplier?.id, 'view']">{{ dispatch.supplier?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/dispatch', dispatch.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

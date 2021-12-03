@@ -1,0 +1,111 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-car-heading" data-cy="CarCreateUpdateHeading" style="text-align: right">إضافة او تعديل</h2>
+
+      <div style="text-align: right">
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" for="field_id">ر.م</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_name">اسم السيارة</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_carIssue">سنة تصنيع</label>
+          <input type="number" class="form-control" name="carIssue" id="field_carIssue" data-cy="carIssue" formControlName="carIssue" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_carnNumber">رقم اللوحة</label>
+          <input
+            type="text"
+            class="form-control"
+            name="carnNumber"
+            id="field_carnNumber"
+            data-cy="carnNumber"
+            formControlName="carnNumber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_carMotor">Car Motor</label>
+          <input type="text" class="form-control" name="carMotor" id="field_carMotor" data-cy="carMotor" formControlName="carMotor" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_carShellNumber">Car Shell Number</label>
+          <input
+            type="text"
+            class="form-control"
+            name="carShellNumber"
+            id="field_carShellNumber"
+            data-cy="carShellNumber"
+            formControlName="carShellNumber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_classification">Classification</label>
+          <input
+            type="text"
+            class="form-control"
+            name="classification"
+            id="field_classification"
+            data-cy="classification"
+            formControlName="classification"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_madein">Madein</label>
+          <input type="text" class="form-control" name="madein" id="field_madein" data-cy="madein" formControlName="madein" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_panaelnumber">Panaelnumber</label>
+          <input
+            type="text"
+            class="form-control"
+            name="panaelnumber"
+            id="field_panaelnumber"
+            data-cy="panaelnumber"
+            formControlName="panaelnumber"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" for="field_notes">Notes</label>
+          <input type="text" class="form-control" name="notes" id="field_notes" data-cy="notes" formControlName="notes" />
+        </div>
+      </div>
+
+      <div>
+        <button
+          type="button"
+          id="cancel-save"
+          data-cy="entityCreateCancelButton"
+          class="btn btn-secondary btn-sm"
+          (click)="previousState()"
+        >
+          &nbsp;<span>الغاء</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary btn-sm"
+        >
+          <span>حفظ</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
