@@ -67,7 +67,7 @@
           </td>
           <td>
             <div *ngIf="failure.car">
-              <a [routerLink]="['/car', failure.car?.name, 'view']">{{ failure.car?.name }}</a>
+              <a [routerLink]="['/car', failure.car?.carnNumber, 'view']">{{ failure.car?.carnNumber }}</a>
             </div>
           </td>
           <td class="text-right">

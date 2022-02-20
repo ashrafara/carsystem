@@ -39,7 +39,7 @@
               [ngValue]="carOption.id === editForm.get('car')!.value?.id ? editForm.get('car')!.value : carOption"
               *ngFor="let carOption of carsCollection; trackBy: trackCarById"
             >
-              {{ carOption.name }}
+              {{ carOption.carnNumber }}
             </option>
           </select>
         </div>

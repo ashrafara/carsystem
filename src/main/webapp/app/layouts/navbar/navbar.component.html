@@ -1,8 +1,6 @@
 <nav data-cy="navbar" class="navbar navbar-dark navbar-expand-md bg-dark">
   <a class="navbar-brand logo" routerLink="/" (click)="collapseNavbar()">
-    <span class="logo-img"></span>
     <span class="navbar-title">منظومة السيارات</span>
-    <span class="navbar-version">{{ version }}</span>
   </a>
   <a
     class="navbar-toggler d-lg-none"
@@ -32,6 +30,27 @@
         </a>
       </li>
       <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="nav-link" routerLink="employee" (click)="collapseNavbar()">
+          <span>
+            <span>الموظفين</span>
+          </span>
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="nav-link" routerLink="car" (click)="collapseNavbar()">
+          <span>
+            <span>السيارات</span>
+          </span>
+        </a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a class="nav-link" routerLink="failure" (click)="collapseNavbar()">
+          <span>
+            <span>الاعطال</span>
+          </span>
+        </a>
+      </li>
 
       <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
         <a class="nav-link" routerLink="supplier" (click)="collapseNavbar()">
@@ -44,27 +63,6 @@
         <a class="nav-link" routerLink="dispatch" (click)="collapseNavbar()">
           <span>
             <span>المصروف</span>
-          </span>
-        </a>
-      </li>
-      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <a class="nav-link" routerLink="failure" (click)="collapseNavbar()">
-          <span>
-            <span>الاعطال</span>
-          </span>
-        </a>
-      </li>
-      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <a class="nav-link" routerLink="car" (click)="collapseNavbar()">
-          <span>
-            <span>السيارات</span>
-          </span>
-        </a>
-      </li>
-      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <a class="nav-link" routerLink="employee" (click)="collapseNavbar()">
-          <span>
-            <span>الموظفين</span>
           </span>
         </a>
       </li>

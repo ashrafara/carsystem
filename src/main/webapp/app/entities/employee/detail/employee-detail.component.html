@@ -33,7 +33,7 @@
         <dt><span>السيارة</span></dt>
         <dd>
           <div *ngIf="employee.car">
-            <a [routerLink]="['/car', employee.car?.name, 'view']">{{ employee.car?.name }}</a>
+            <a [routerLink]="['/car', employee.car?.carnNumber, 'view']">{{ employee.car?.carnNumber }}</a>
           </div>
         </dd>
       </dl>

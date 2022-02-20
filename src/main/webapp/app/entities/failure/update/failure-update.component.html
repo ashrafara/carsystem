@@ -144,7 +144,7 @@
         <div class="form-group">
           <label class="form-control-label" for="field_car">السيارة</label>
           <div ng-controller="filterctrl">
-            بحJـث عن الاسم:<input ng-model="searchtxt.car" type="text" placeholder="Enter Only Name" /><br /><br />
+            بحـث عن الاسم:<input ng-model="searchtxt.car" type="text" placeholder="Enter Only Name" /><br /><br />
           </div>
 
           <select class="form-control" id="field_car" data-cy="car" name="car" formControlName="car" size="5">
@@ -153,7 +153,7 @@
               [ngValue]="carOption.id === editForm.get('car')!.value?.id ? editForm.get('car')!.value : carOption"
               *ngFor="let carOption of carsSharedCollection; trackBy: trackCarById"
             >
-              {{ carOption.name }}
+              {{ carOption.carnNumber }}
             </option>
           </select>
         </div>

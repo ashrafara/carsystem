@@ -45,7 +45,7 @@
           <td>{{ dispatch.quantity }}</td>
           <td>
             <div *ngIf="dispatch.car">
-              <a [routerLink]="['/car', dispatch.car?.name, 'view']">{{ dispatch.car?.name }}</a>
+              <a [routerLink]="['/car', dispatch.car?.carnNumber, 'view']">{{ dispatch.car?.carnNumber }}</a>
             </div>
           </td>
           <td>
